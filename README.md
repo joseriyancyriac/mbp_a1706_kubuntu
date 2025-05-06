@@ -231,8 +231,21 @@ EOF
 
 ```bash
 systemctl enable macbook-quirks.service
-sudo reboot
 ```
+> [!IMPORTANT]
+> 8. Confirm the iBridge device path
+>
+>```bash
+>ls -d /sys/bus/usb/devices/1-3      # should exist
+>
+>#Toggle the authorized flag by hand once
+>
+>echo 0 | sudo tee /sys/bus/usb/devices/1-3/authorized
+>sleep 0.1
+>echo 1 | sudo tee /sys/bus/usb/devices/1-3/authorized
+>
+>sudo reboot
+>```
 ---
 
 ## Fan Control
